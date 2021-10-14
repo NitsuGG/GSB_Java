@@ -12,7 +12,7 @@ public class Visite {
 		this.datevisite = datevisite;
 		this.commentaire = commentaire;
 		this.leVisiteur= leVisiteur;
-		this.leMedecin= leMedecin;
+		this.leMedecin=leMedecin;
 		
 	}
 
@@ -40,20 +40,20 @@ public class Visite {
 		this.commentaire = commentaire;
 	}
 
-	public String getMatricule() {
-		return matricule;
+	public Visiteur getLeVisiteur() {
+		return leVisiteur;
 	}
 
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
+	public void setleVisiteur(Visiteur leVisiteur) {
+		this.leVisiteur=leVisiteur;
 	}
 
-	public String getCodemed() {
-		return codemed;
+	public Medecin getLeMedecin() {
+		return leMedecin;
 	}
 
-	public void setCodemed(String codemed) {
-		this.codemed = codemed;
+	public void setLeMedecin(Medecin leMedecin) {
+		this.leMedecin=leMedecin;
 	}
 	
 	

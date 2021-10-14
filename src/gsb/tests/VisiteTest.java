@@ -10,8 +10,9 @@ public class VisiteTest {
 		
 		Localite guidel = new Localite("56520", "guidel");
 		Medecin leMedecin = new Medecin("codemed", "NOMMED", "PrenomMed", "rue", guidel, "06-65-14-17-39", "", "la spécialité");
-		Visiteur leVisiteur = new Visiteur("Le mat","Nom visit","prenom visit","login","password","adresse",guidel,"2018-10-20","")
-		Visite uneVisite = new Visite("codevisite", "2021-10-14", "", null, leMedecin)
+		Visiteur leVisiteur = new Visiteur("Le mat","Nom visit","prenom visit","login","password","adresse",guidel,"2018-10-20","SW","Swiss");
+		Visite uneVisite = new Visite("codevisite", "2021-10-14", "", leVisiteur, leMedecin,);
+		
 		
 		
 		
@@ -19,4 +20,3 @@ public class VisiteTest {
 	}
 
 }
-uneVisite = new Visite('1','2020-10-21', "visite chez micheline", "e39", "m001");
