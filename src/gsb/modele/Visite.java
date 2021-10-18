@@ -24,11 +24,11 @@ public class Visite {
 		this.reference = reference;
 	}
 
-	public String getDatevisite() {
+	public String getDateVisite() {
 		return datevisite;
 	}
 
-	public void setDatevisite(String datevisite) {
+	public void setDateVisite(String datevisite) {
 		this.datevisite = datevisite;
 	}
 
@@ -44,7 +44,7 @@ public class Visite {
 		return leVisiteur;
 	}
 
-	public void setleVisiteur(Visiteur leVisiteur) {
+	public void setLeVisiteur(Visiteur leVisiteur) {
 		this.leVisiteur=leVisiteur;
 	}
 
