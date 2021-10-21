@@ -36,6 +36,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	protected JMenuBar mbar;
 	protected JMenu mMedecins;
 	protected JMenu mMedicaments;
+	protected JMenu mVisiteur;
 
 	JMenu mVisites;
 
@@ -79,10 +80,20 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mA2 = new JMenuItem("Ajout Visite");
 		mA2.addActionListener(this);
 		mVisites.add(mA2);
+		
+		mVisiteur = new JMenu("Visiteur");
+		JMenuItem mB1 = new JMenuItem("Consultation Visiteur");
+		mB1.addActionListener(this); // installation d'un écouteur d'action
+		mVisiteur.add(mB1);
+		JMenuItem mB2 =new JMenuItem("Ajour Visiteur");
+		mB2.addActionListener(this);
+		mVisiteur.add(mB2);
+		
 
 		mbar.add(mMedecins);
 		mbar.add(mMedicaments);
 		mbar.add(mVisites);
+		mbar.add(mVisiteur);
 		setJMenuBar(mbar);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
