@@ -1,7 +1,15 @@
 package gsb.vue;
 
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -54,6 +62,7 @@ public class JIFVisiteAjout extends JInternalFrame {
 	        JTcodeMed = new JTextField();
 	        
 	        ajouter = new JButton("Ajouter Visite");
+	        ajouter.addActionListener(this);
 	        
 	        pTexte.add(JLref);
 	        pTexte.add(JTref);
@@ -67,11 +76,18 @@ public class JIFVisiteAjout extends JInternalFrame {
 	        pTexte.add(JTcodeMed);
 	        
 	        pBoutons.add(ajouter);
+	        
 	        // mise en forme de la fenêtre
 	        
 	        p.add(pTexte);
 	        p.add(pBoutons);
 	        Container contentPane = getContentPane();
 	        contentPane.add(p);
+	 }
+	 
+	 public void actionPerformed(ActionEvent evt) {
+		 if (evt.getSource() instanceof JButton) {
+			 evt.getActionCommand()
+		 }
 	 }
 }
