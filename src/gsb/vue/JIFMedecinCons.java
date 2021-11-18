@@ -69,8 +69,7 @@ public class JIFMedecinCons extends JIFMedecin  implements ActionListener {
                           //le code que tu veux exécuter à la fermeture de la JInternalFrame
             }
         });
-    }
-	
+    }	
     public void actionPerformed(ActionEvent evt) { 
 		Object source = evt.getSource();
    		if (source == premier){

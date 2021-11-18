@@ -86,7 +86,7 @@ public class MedicamentDao {
 		} 
 		catch (Exception e) { 
 			e.printStackTrace(); 
-			System.out.println("Erreur lors de l'insertion du M�dicament" + e.getMessage()); 
+			System.out.println("Erreur lors de l'insertion du Médicament" + e.getMessage()); 
 		} 
 	} 
 	 
