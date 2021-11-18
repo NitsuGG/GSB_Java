@@ -13,7 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-/**
+/**	
  * @author Isabelle 22 févr. 2015 TODO Pour changer le modèle de ce commentaire
  *         de type généré, allez à : Fenêtre - Préférences - Java - Style de
  *         code - Modèles de code
