@@ -1,9 +1,3 @@
-/*
- * Créé le 22 févr. 2015
- *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
- */
 package gsb.vue;
 
 import java.awt.BorderLayout;
@@ -85,7 +79,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mB1 = new JMenuItem("Consultation Visiteur");
 		mB1.addActionListener(this); // installation d'un écouteur d'action
 		mVisiteur.add(mB1);
-		JMenuItem mB2 =new JMenuItem("Ajour Visiteur");
+		JMenuItem mB2 =new JMenuItem("Ajout Visiteur");
 		mB2.addActionListener(this);
 		mVisiteur.add(mB2);
 		
@@ -99,7 +93,6 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent evt) {
 		// TODO Raccord de méthode auto-généré
 		if (evt.getSource() instanceof JMenuItem) {
@@ -113,8 +106,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 				ouvrirFenetre(new JIFMedecinListeDic(this));
 			} else if (ChoixOption.equals("Ajout Visite")) {
 				ouvrirFenetre(new JIFVisiteAjout());
-			} 
-
+			} else if (ChoixOption.equals("Ajout Visiteur")) {
+				ouvrirFenetre(new JIFVisiteurAjout());
+			}
 		}
 
 	}
