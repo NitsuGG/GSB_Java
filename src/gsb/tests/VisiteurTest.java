@@ -10,7 +10,7 @@ public class VisiteurTest {
 		
 		Localite unLocalite = new Localite("56100", "Lorient");
 		
-		Visiteur unVisiteur = new Visiteur("1", "Quintin", "Yves", "YvesQ", "password"
+		Visiteur unVisiteur = new Visiteur("a11", "Quintin", "Yves", "YvesQ", "password"
 				,"Rue des Ormes", unLocalite, "20-05-2021", "SW", "SWISS");
 		
 		AffichageModele.afficherVisiteur(unVisiteur);
