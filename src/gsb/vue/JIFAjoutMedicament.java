@@ -138,10 +138,7 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
 				JTLibelleFamille.setText("");
 				
 				JLValidation.setText("Le médicament à été ajouté !");
-				Thread.sleep(3000);
-				JLValidation.setText("");
-
-			} catch (InterruptedException e1) {
+			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}			
