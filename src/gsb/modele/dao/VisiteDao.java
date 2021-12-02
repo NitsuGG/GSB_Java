@@ -51,7 +51,25 @@ public class VisiteDao {
 	
 	public static HashMap<String,Visite> retournerDictionnaireDesVisitesRecherchees(String matricule, String date){
 		HashMap<String,Visite> diccoDesVisites = new HashMap<String,Visite>();
-		ResultSet reqSelection = ConnexionMySql.execReqSelection("select REFERENCE from VISITE where MATRICULE='"+matricule+"' and DATE='"+date+"'");
+		String matRq;
+		String dateRq;
+		if(matricule==null) {
+			 matRq="%";
+		}
+		else {
+			 matRq="%"+matricule+"%";
+			
+		}
+		
+		if(date==null) {
+			 dateRq="%";
+		}
+		else {
+			 dateRq="%"+date+"%";
+		}
+		
+		ResultSet reqSelection = ConnexionMySql.execReqSelection(
+				"select REFERENCE from VISITE where MATRICULE like'"+matRq+"' and DATEVISITE like'"+dateRq+"'");
 		try {
 			while(reqSelection.next()) {
 				String reference=reqSelection.getString(1);
@@ -68,7 +86,7 @@ public class VisiteDao {
 		
 	}
 	
-	public static HashMap<String,Visite> retournerDictionnaireDesVisites(){
+	/**public static HashMap<String,Visite> retournerDictionnaireDesVisites(){
 		HashMap<String,Visite> diccoDesVisites = new HashMap<String,Visite>();
 		ResultSet reqSelection = ConnexionMySql.execReqSelection("select REFERENCE from VISITE ");
 		try {
@@ -85,5 +103,5 @@ public class VisiteDao {
 		return diccoDesVisites;
 		
 		
-	}
+	} */
 }

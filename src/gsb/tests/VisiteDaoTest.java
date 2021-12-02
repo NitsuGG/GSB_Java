@@ -23,7 +23,7 @@ public class VisiteDaoTest {
 		Visiteur leVisiteur = VisiteurDao.rechercher("a17");
 		Medecin leMedecin = MedecinDao.rechercher("m001");
 		Visite ajoutVisite = new Visite("v1001", "2021-11-18", "", leVisiteur, leMedecin);
-		HashMap<String,Visite> dicco = VisiteDao.retournerDictionnaireDesVisites();
+		HashMap<String,Visite> dicco = VisiteDao.retournerDictionnaireDesVisitesRecherchees(null,null);
 		int nbLignes = dicco.size();
 		int i =0;
 		String[][] data = new String[nbLignes][3] ;
