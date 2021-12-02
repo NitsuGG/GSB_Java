@@ -1,6 +1,8 @@
 package gsb.modele.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 import gsb.modele.Localite;
 import gsb.modele.Medecin;
@@ -21,7 +23,7 @@ public class VisiteDao {
 				String medecin = reqSelection.getString(5);
 				Visiteur leVisiteur = VisiteurDao.rechercher(visiteur);
 				Medecin leMedecin = MedecinDao.rechercher(medecin);
-				uneVisite = new Visite(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3), leVisiteur, leMedecin);
+				uneVisite = new Visite(ref, date, comm, leVisiteur, leMedecin);
 			};
 			}
 		catch(Exception e) {
@@ -32,19 +34,56 @@ public class VisiteDao {
 		return uneVisite;
 	}
 	
-	public static int creer(Visite uneVisite) {
-		String ref = uneVisite.getReference();
+	public static int creer(String ref, String date, String comm, String matVisiteur, String codeMed ) {
+	/*	String ref = uneVisite.getReference();
 		String date = uneVisite.getDateVisite();
 		String comm = uneVisite.getCommentaire();
 		Visiteur leVisiteur = uneVisite.getLeVisiteur();
 		String matVisiteur = leVisiteur.getMatricule();
 		Medecin leMedecin = uneVisite.getLeMedecin();
 		String codeMed = leMedecin.getCodeMed();
-		
+	**/	
 		String reqInsertion = "insert into VISITE values('"+ref+"','"+date+"','"+comm+"','"+matVisiteur+"','"+codeMed+"')";
 		int result = ConnexionMySql.execReqMaj(reqInsertion);
 		ConnexionMySql.fermerConnexionBd();
 		return result;
 		}
 	
+	public static HashMap<String,Visite> retournerDictionnaireDesVisitesRecherchees(String matricule, String date){
+		HashMap<String,Visite> diccoDesVisites = new HashMap<String,Visite>();
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select REFERENCE from VISITE where MATRICULE='"+matricule+"' and DATE='"+date+"'");
+		try {
+			while(reqSelection.next()) {
+				String reference=reqSelection.getString(1);
+				diccoDesVisites.put(reference, VisiteDao.rechercher(reference));
+				
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur retournerDiccoDesVisitesRecherchees");
+		}
+		return diccoDesVisites;
+		
+		
+	}
+	
+	public static HashMap<String,Visite> retournerDictionnaireDesVisites(){
+		HashMap<String,Visite> diccoDesVisites = new HashMap<String,Visite>();
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select REFERENCE from VISITE ");
+		try {
+			while(reqSelection.next()) {
+				String reference=reqSelection.getString(1);
+				diccoDesVisites.put(reference, VisiteDao.rechercher(reference));
+				
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur retournerDiccoDesVisites");
+		}
+		return diccoDesVisites;
+		
+		
+	}
 }

@@ -27,8 +27,10 @@ public class AffichageModele {
 		System.out.println("Reference Visite :"+uneVisite.getReference());
 		System.out.println("Date de Visite :"+uneVisite.getDateVisite());
 		System.out.println("Commentaire Visite :"+uneVisite.getCommentaire());
-		afficherVisiteur(uneVisite.getLeVisiteur());
+
 		afficherMedecin(uneVisite.getLeMedecin());
+		afficherVisiteur(uneVisite.getLeVisiteur());
+
 		
 	}
 	

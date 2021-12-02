@@ -16,7 +16,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+
+import gsb.modele.dao.VisiteDao;
+
 
 public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -42,7 +44,7 @@ public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	
 	 public JIFVisiteAjout() {
 		 	setTitle("Ajout Visite");
-	    	p = new JPanel();  // panneau principal de la fenêtre
+	    	p = new JPanel();  // panneau principal de la fenï¿½tre
 	        pBoutons = new JPanel();    // panneau supportant les boutons
 	        pTexte = new JPanel(new GridLayout(5,2));
 	        
@@ -62,7 +64,7 @@ public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	        JTcodeMed = new JTextField();
 	        
 	        ajouter = new JButton("Ajouter Visite");
-	        ajouter.addActionListener(this);
+	        
 	        
 	        pTexte.add(JLref);
 	        pTexte.add(JTref);
@@ -76,8 +78,8 @@ public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	        pTexte.add(JTcodeMed);
 	        
 	        pBoutons.add(ajouter);
-	        
-	        // mise en forme de la fenêtre
+	        ajouter.addActionListener(this);
+	        // mise en forme de la fenï¿½tre
 	        
 	        p.add(pTexte);
 	        p.add(pBoutons);
@@ -86,8 +88,19 @@ public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	 }
 	 
 	 public void actionPerformed(ActionEvent evt) {
-		 if (evt.getSource() instanceof JButton) {
-			 evt.getActionCommand();
+		 if (evt.getSource() ==ajouter) {
+			 try {
+				 VisiteDao.creer(JTref.getText(), JTdate.getText(), JTcomm.getText(), JTmatricule.getText(), JTcodeMed.getText());
+				 JTref.setText("");
+				 JTdate.setText("");
+				 JTcomm.setText("");
+				 JTmatricule.setText("");
+				 JTcodeMed.setText("");
+				 
+				 
+			 } catch (Exception e1) {
+				 e1.printStackTrace();
+			 }
 		 }
 	 }
 }
