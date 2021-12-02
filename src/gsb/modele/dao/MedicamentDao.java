@@ -71,8 +71,24 @@ public class MedicamentDao {
 			System.out.println("Erreur ListMedicamentFamille" + e.getMessage()); 
 		} 
 		return ListeDesMedicamentFamille; 
+	}
+	
+	
+	public static Medicament ListMedicamentCode(String Code){ 
+		Medicament unMedicament = null; 
+		
+		try{
+			ResultSet query = ConnexionMySql.execReqSelection("SELECT * FROM MEDICAMENT WHERE MED_DEPOTLEGAL = '" + Code + "'"); 
+			while (query.next()) { 
+			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8));
+			}
+		} 
+		catch (SQLException e) { 
+			e.printStackTrace(); 
+			System.out.println("Erreur ListMedicamenCode: \n" + e.getMessage()); 
+		} 
+		return unMedicament; 
 	} 
-	 
 	 
 	/* 
 	 * insertNewMedicament() 

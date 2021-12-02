@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class JIFVisiteAjout extends JInternalFrame {
+public class JIFVisiteAjout extends JInternalFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	protected JPanel p;  
 	protected JPanel pTexte;
@@ -87,7 +87,7 @@ public class JIFVisiteAjout extends JInternalFrame {
 	 
 	 public void actionPerformed(ActionEvent evt) {
 		 if (evt.getSource() instanceof JButton) {
-			 evt.getActionCommand()
+			 evt.getActionCommand();
 		 }
 	 }
 }

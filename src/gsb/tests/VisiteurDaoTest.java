@@ -13,6 +13,4 @@ public class VisiteurDaoTest {
 		Visiteur unVisiteur = VisiteurDao.rechercher("a17");
 		AffichageModele.afficherVisiteur(unVisiteur);
 	}
-
-	}
 }

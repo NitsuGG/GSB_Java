@@ -17,14 +17,12 @@ import javax.swing.JTextField;
 import gsb.modele.Medicament;
 import gsb.modele.dao.MedicamentDao;
 
-
-public class JIFAjoutMedicament extends JInternalFrame implements ActionListener{
+public class JIFMedicamentDetail extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	protected JPanel p;  
 	protected JPanel pTexte;
-	protected JPanel pBoutons;
 	
 	protected JLabel JLDepotLegal;
 	protected JLabel JLNomCommercial;
@@ -33,9 +31,6 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
 	protected JLabel JLContreIndication;
 	protected JLabel JLCodeFamille;
 	protected JLabel JLLibelleFamille;
-	
-	protected JLabel JLValidation;
-
 	
 	
 	protected JTextField JTDepotLegal;
@@ -46,16 +41,14 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
 	protected JTextField JTCodeFamille;
 	protected JTextField JTLibelleFamille;
 	
-	protected JButton JBAjouterMedic;
 	
-	
-	public JIFAjoutMedicament() {
+	public JIFMedicamentDetail(Medicament unMedicament) {
 		/*
 		 * Zone de la page
 		 */
+		super();
 		p = new JPanel();
-        pBoutons = new JPanel();    // panneau supportant les boutons
-        pTexte = new JPanel(new GridLayout(9,2));
+        pTexte = new JPanel(new GridLayout(10,2));
         /*
          * Création des labels
          */
@@ -66,8 +59,6 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
         JLContreIndication = new JLabel("Contre indication");
 		JLCodeFamille = new JLabel("Code famille: ");
 		JLLibelleFamille = new JLabel("Libellé Famille: ");
-		JLValidation = new JLabel("");
-
 		
 		/*
 		 * Création des inputs 
@@ -80,12 +71,7 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
 		JTContreIndication = new JTextField();
 		JTCodeFamille = new JTextField();
 		JTLibelleFamille = new JTextField();
-		
-		/*
-		 * Ajout des boutons
-		 */
-		JBAjouterMedic = new JButton("Ajouter le médicament");
-		
+				
 		/*
 		 * Insertion des éléments dans l'interface
 		 */
@@ -110,44 +96,17 @@ public class JIFAjoutMedicament extends JInternalFrame implements ActionListener
 		pTexte.add(JLLibelleFamille);
 		pTexte.add(JTLibelleFamille);
 		
-		pBoutons.add(JBAjouterMedic);
-		pTexte.add(JLValidation);
-		JBAjouterMedic.addActionListener(this); //Pour savoir quand on appuit sur le bouton
-		
-		p.add(pTexte);
-		p.add(pBoutons);
-		
+		p.add(pTexte);		
         Container contentPane = getContentPane();
         contentPane.add(p);
-			
-	}
-
-
-	@Override
-	/*
-	 * Action effecter lors de l'appuie sur le bouton
-	 */
-	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-		if(source == JBAjouterMedic) { //La source de la rececption d'info
-			try {
-				MedicamentDao MedicamentDAO = new MedicamentDao();
-				MedicamentDAO.insertNewMedicament(JTDepotLegal.getText(), JTNomCommercial.getText(), JTComposition.getText(), JTEffet.getText(), JTContreIndication.getText(), JTCodeFamille.getText(), JTLibelleFamille.getText());
-				JTDepotLegal.setText("");
-				JTNomCommercial.setText("");
-				JTComposition.setText("");
-				JTEffet.setText("");
-				JTContreIndication.setText("");
-				JTCodeFamille.setText("");
-				JTLibelleFamille.setText("");
-				
-				JLValidation.setText("Le médicament à été ajouté !");
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}			
-		}
 		
+		JTDepotLegal.setText(unMedicament.getIdMedicament());
+		JTNomCommercial.setText(unMedicament.getNomMedicament());
+		JTComposition.setText(unMedicament.getCompoMedicament());
+		JTEffet.setText(unMedicament.getEffetMedicament());
+		JTContreIndication.setText(unMedicament.getContreIndicMedicament());
+		JTCodeFamille.setText(unMedicament.getFamCodeMedicament());
+		JTLibelleFamille.setText(unMedicament.getFamLibelleMedicament());
 	}
 	
 	
