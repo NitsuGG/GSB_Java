@@ -34,5 +34,14 @@ public class LocaliteDao {
 		ConnexionMySql.fermerConnexionBd();
 		return uneLocalite;
 	}
+	
+	public static int creer(Localite unLocalite) {
+		String cp = unLocalite.getCodePostal();
+		String ville = unLocalite.getVille();
+		String reqInsertion = "insert into LOCALITE values('"+cp+"','"+ville+"')";
+		int result = ConnexionMySql.execReqMaj(reqInsertion);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
 
 }
