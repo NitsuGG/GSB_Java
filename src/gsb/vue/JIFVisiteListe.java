@@ -33,7 +33,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	protected JInternalFrame myJInternalFrame;
 	private HashMap<String,Visite> diccoVisite;
-	private HashMap<String,Visite> diccoRecherche;
+	
 	protected JPanel p;  
 	protected JPanel pTexte1;
 	protected JPanel pSaisie;
@@ -141,6 +141,16 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener{
 				e2.printStackTrace();
 			}
 		}
+		else if(e.getSource()==Baffiche) {
+			
+				if (diccoVisite.containsKey(JTreference.getText())){
+					Visite laVisite=VisiteDao.rechercher(JTreference.getText());
+					leMenu.ouvrirFenetre(new JIFVisiteDetail(laVisite));
+				}
+			
+		}
 	}
-
+	
+	
+	
 }

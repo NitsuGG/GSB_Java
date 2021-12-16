@@ -8,6 +8,10 @@ import gsb.modele.Localite;
 import gsb.modele.Medecin;
 import gsb.modele.Visite;
 import gsb.modele.Visiteur;
+import gsb.modele.Medicament;
+import gsb.modele.Offrir;
+import gsb.modele.dao.MedicamentDao;
+
 
 public class VisiteDao {
 	
@@ -85,6 +89,54 @@ public class VisiteDao {
 		
 		
 	}
+	
+	public static int modifCommentaire(String reference, String commentaire) {
+		String reqModif ="update VISITE SET COMMENTAIRE='"+commentaire+"' WHERE REFERENCE='"+reference+"'";
+		int result=ConnexionMySql.execReqMaj(reqModif);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
+	
+	public static HashMap<String,Offrir> rechercherMedicaments(String reference) {
+		HashMap<String,Offrir> lesMedicaments = new HashMap<String,Offrir>();
+		ResultSet reqVisite = ConnexionMySql.execReqSelection("select * from OFFRIR where REFERENCE='"+reference+"'");
+		int i = 0;
+		try {
+			while(reqVisite.next()) {
+				Offrir leMedicament=null;
+				int quantite=reqVisite.getInt(1);
+				String ref=reqVisite.getString(2);
+				String depotlegal=reqVisite.getString(3);
+				leMedicament = new Offrir(quantite, ref, depotlegal);
+				lesMedicaments.put("'"+i+"'",leMedicament);
+				i++;
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur retournerMedicaments");
+		}
+		
+		
+		return lesMedicaments;
+	}
+	
+	public static int updateMedicaments(String ref, String depotIni, String depotNew, String quantite) {
+		int resultat=0;
+		if(depotIni==null) {
+			String reqInsert="insert into OFFRIR values("+quantite+",'"+ref+"','"+depotNew+"')";
+			resultat= ConnexionMySql.execReqMaj(reqInsert);
+			ConnexionMySql.fermerConnexionBd();
+			
+		}
+		else {
+			String reqUpdate="update OFFRIR set QUANTITE="+quantite+", MED_DEPOTLEGAL='"+depotNew+"' where MED_DEPOTLEGAL='"+depotIni+"'";
+			resultat=ConnexionMySql.execReqMaj(reqUpdate);
+			ConnexionMySql.fermerConnexionBd();
+		}
+		return resultat;
+	}
+	
 	
 	/**public static HashMap<String,Visite> retournerDictionnaireDesVisites(){
 		HashMap<String,Visite> diccoDesVisites = new HashMap<String,Visite>();

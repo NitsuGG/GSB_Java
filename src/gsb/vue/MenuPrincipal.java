@@ -77,6 +77,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mA2 = new JMenuItem("Ajout Visite");
 		mA2.addActionListener(this);
 		mVisites.add(mA2);
+		JMenuItem mA3 = new JMenuItem("Maj Visite");
+		mA3.addActionListener(this);
+		mVisites.add(mA3);
 		
 		mVisiteur = new JMenu("Visiteur");
 		JMenuItem mB1 = new JMenuItem("Consultation Visiteur");
@@ -110,6 +113,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 				ouvrirFenetre(new JIFVisiteAjout());
 			} else if (ChoixOption.equals("Liste Visite")) {
 				ouvrirFenetre(new JIFVisiteListe(this, null,null));
+			} else if (ChoixOption.equals("Maj Visite")) {
+				ouvrirFenetre(new JIFVisiteMaj(this, null));
 			} else if (ChoixOption.equals("Ajout Visiteur")) {
 				ouvrirFenetre(new JIFVisiteurAjout());
 			} else if(ChoixOption.equals("Ajout Medicaments")) {
@@ -131,7 +136,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		myJInternalFrame.setResizable(true);
 		myJInternalFrame.setMaximizable(true);
 		myJInternalFrame.setClosable(true);
-		myJInternalFrame.setSize(700, 500);
+		myJInternalFrame.setSize(480, 380);
 		desktopPane.add(myJInternalFrame);
 	}
 
