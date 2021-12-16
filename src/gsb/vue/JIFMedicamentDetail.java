@@ -48,7 +48,7 @@ public class JIFMedicamentDetail extends JInternalFrame {
 		 */
 		super();
 		p = new JPanel();
-        pTexte = new JPanel(new GridLayout(10,2));
+        pTexte = new JPanel(new GridLayout(15,2));
         /*
          * Création des labels
          */

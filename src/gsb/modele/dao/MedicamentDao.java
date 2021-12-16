@@ -3,7 +3,8 @@ import gsb.modele.Medicament;
  
 import java.sql.ResultSet; 
 import java.sql.SQLException; 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.HashMap; 
  
 public class MedicamentDao { 
 	 
@@ -104,7 +105,30 @@ public class MedicamentDao {
 			e.printStackTrace(); 
 			System.out.println("Erreur lors de l'insertion du Médicament" + e.getMessage()); 
 		} 
-	} 
+	}
+	
+	public static HashMap<String,Medicament> dicoFamille(String Famille){
+		HashMap<String, Medicament> dicoFamille = new HashMap<String, Medicament>();
+		String matRq;
+		if(Famille==null) {
+			matRq = "%";
+		}else {
+			matRq = "%" + Famille + "%";
+		}
+		ResultSet query = ConnexionMySql.execReqSelection("select * from MEDICAMENT where FAM_CODE like '"+matRq+"'");
+		try {
+			while(query.next()){
+				String reference = query.getString(1);
+				dicoFamille.put(reference, MedicamentDao.rechercherMedicament(reference));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur DicoFamille");
+		}
+		
+		return dicoFamille;
+		
+	}
 	 
 	 
 } 
