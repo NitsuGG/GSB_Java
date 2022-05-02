@@ -78,7 +78,7 @@ public class Visiteur {
 				return codePostal;
 			}
 			
-			public void setCodePostal(Localite codePostal) {
+			public void setLocalite(Localite codePostal) {
 				this.codePostal = codePostal;
 			}
 			
