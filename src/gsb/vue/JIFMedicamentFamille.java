@@ -55,7 +55,7 @@ public class JIFMedicamentFamille extends JInternalFrame implements ActionListen
         pTexte1 = new JPanel(new GridLayout(1,10)); //premier panneau (form)
         
         
-        JLfamille= new JLabel("Code Médicament");
+        JLfamille= new JLabel("Code Famille: ");
         
         JTfamille = new JTextField();
         

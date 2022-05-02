@@ -39,7 +39,7 @@ public class ConnexionMySql { // DAO = Data Access Object
 			cnx = DriverManager.getConnection(url,"usergsb","password"); 
 		} 
 		// si la connexion echoue un message d'erreur est affiché
-        catch(Exception e) {  System.out.println("Echec lors de la connexion");  } 
+        catch(Exception e) {  System.out.println("Echec lors de la connexion" + e);  } 
 		
 		// url lycée: "jdbc:mysql://192.177.1.13:3306/GSB"
 		//get connexion : url,"usergsb","password"

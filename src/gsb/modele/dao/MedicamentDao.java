@@ -1,6 +1,7 @@
 package gsb.modele.dao; 
-import gsb.modele.Medicament; 
- 
+import gsb.modele.Medicament;
+
+import java.io.Serial;
 import java.sql.ResultSet; 
 import java.sql.SQLException; 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class MedicamentDao {
 		 
 		try { 
 			if (query.next()) { 
-				unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8));	 
+				unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8), query.getString(9));	 
 			}; 
 			} 
 		catch(Exception e) { 
@@ -40,7 +41,7 @@ public class MedicamentDao {
 		try{ 
 		while (query.next()) { 
 			unMedicament = null; 
-			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8)); 
+			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8), query.getString(9)); 
 			ListeDesMedicament.add(unMedicament); 
 			} 
 		} 
@@ -63,7 +64,7 @@ public class MedicamentDao {
 		try{ 
 		while (query.next()) { 
 			unMedicament = null; 
-			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8)); 
+			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8), query.getString(9)); 
 			ListeDesMedicamentFamille.add(unMedicament); 
 			} 
 		} 
@@ -81,7 +82,7 @@ public class MedicamentDao {
 		try{
 			ResultSet query = ConnexionMySql.execReqSelection("SELECT * FROM MEDICAMENT WHERE MED_DEPOTLEGAL = '" + Code + "'"); 
 			while (query.next()) { 
-			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8));
+			unMedicament = new Medicament(query.getString(1), query.getString(2), query.getString(3), query.getString(4), query.getString(5), query.getFloat(6), query.getString(7), query.getString(8), query.getString(9));
 			}
 		} 
 		catch (SQLException e) { 
@@ -129,6 +130,25 @@ public class MedicamentDao {
 		return dicoFamille;
 		
 	}
+	
+	public static String getNbConditionnement(String idMedicament) {
+		System.out.println("SELECT count(*) FROM Conditionnement where MED_DEPOTLEGAL ='" + idMedicament + "'");
+		
+		ResultSet query = ConnexionMySql.execReqSelection("SELECT count(*) FROM Conditionnement where MED_DEPOTLEGAL ='" + idMedicament + "'");
+			try {
+				while(query.next()){
+					return query.getString(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return "0";
+		
+	}
+	
+	
 	 
 	 
 } 

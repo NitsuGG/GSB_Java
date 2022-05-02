@@ -31,6 +31,8 @@ public class JIFMedicamentDetail extends JInternalFrame {
 	protected JLabel JLContreIndication;
 	protected JLabel JLCodeFamille;
 	protected JLabel JLLibelleFamille;
+	protected JLabel JLLibelleConditionnement;
+	protected JLabel JLLabelDC;
 	
 	
 	protected JTextField JTDepotLegal;
@@ -40,6 +42,10 @@ public class JIFMedicamentDetail extends JInternalFrame {
 	protected JTextField JTContreIndication;
 	protected JTextField JTCodeFamille;
 	protected JTextField JTLibelleFamille;
+	protected JTextField JTConditionnement;
+	protected JTextField JTDC;
+	
+
 	
 	
 	public JIFMedicamentDetail(Medicament unMedicament) {
@@ -48,7 +54,7 @@ public class JIFMedicamentDetail extends JInternalFrame {
 		 */
 		super();
 		p = new JPanel();
-        pTexte = new JPanel(new GridLayout(15,2));
+        pTexte = new JPanel(new GridLayout(10,2));
         /*
          * Création des labels
          */
@@ -59,18 +65,24 @@ public class JIFMedicamentDetail extends JInternalFrame {
         JLContreIndication = new JLabel("Contre indication");
 		JLCodeFamille = new JLabel("Code famille: ");
 		JLLibelleFamille = new JLabel("Libellé Famille: ");
+		JLLibelleConditionnement = new JLabel("Nb conditionnement: ");
+		JLLabelDC = new JLabel("DC: ");
+
 		
 		/*
 		 * Création des inputs 
 		 */
-		JTDepotLegal = new JTextField(20);
-		JTDepotLegal.setMaximumSize(JTDepotLegal.getPreferredSize());
+		JTDepotLegal = new JTextField(1);
 		JTNomCommercial = new JTextField();
 		JTComposition = new JTextField();
 		JTEffet = new JTextField();
 		JTContreIndication = new JTextField();
 		JTCodeFamille = new JTextField();
 		JTLibelleFamille = new JTextField();
+		JTConditionnement = new JTextField();
+		JTDC = new JTextField();
+
+
 				
 		/*
 		 * Insertion des éléments dans l'interface
@@ -96,6 +108,14 @@ public class JIFMedicamentDetail extends JInternalFrame {
 		pTexte.add(JLLibelleFamille);
 		pTexte.add(JTLibelleFamille);
 		
+		pTexte.add(JLLibelleConditionnement);
+		pTexte.add(JTConditionnement);
+		
+		pTexte.add(JLLabelDC);
+		pTexte.add(JTDC);
+		
+		
+		
 		p.add(pTexte);		
         Container contentPane = getContentPane();
         contentPane.add(p);
@@ -107,6 +127,8 @@ public class JIFMedicamentDetail extends JInternalFrame {
 		JTContreIndication.setText(unMedicament.getContreIndicMedicament());
 		JTCodeFamille.setText(unMedicament.getFamCodeMedicament());
 		JTLibelleFamille.setText(unMedicament.getFamLibelleMedicament());
+		JTDC.setText(unMedicament.getDC());
+		JTConditionnement.setText(MedicamentDao.getNbConditionnement(unMedicament.getIdMedicament()));
 	}
 	
 	

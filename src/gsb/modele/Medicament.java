@@ -10,8 +10,10 @@ public class Medicament {
 	protected Float prixEchantillonMedicament; 
 	protected String famCodeMedicament; 
 	protected String famLibelleMedicament; 
+	protected String DC;
+	
 	 
-	public Medicament(String idMedicament, String nomMedicament, String compoMedicament, String effetMedicament, String contreIndicMedicament, Float prixEchantillonMedicament, String famCodeMedicament, String famLibelleMedicament) { 
+	public Medicament(String idMedicament, String nomMedicament, String compoMedicament, String effetMedicament, String contreIndicMedicament, Float prixEchantillonMedicament, String famCodeMedicament, String famLibelleMedicament, String DC) { 
 		 
 		this.idMedicament = idMedicament; 
 		this.nomMedicament = nomMedicament; 
@@ -21,6 +23,7 @@ public class Medicament {
 		this.prixEchantillonMedicament = prixEchantillonMedicament; 
 		this.famCodeMedicament = famCodeMedicament; 
 		this.famLibelleMedicament = famLibelleMedicament; 
+		this.DC = DC;
 		 
 	} 
  
@@ -86,6 +89,10 @@ public class Medicament {
  
 	public void setFamLibelleMedicament(String famLibelleMedicament) { 
 		this.famLibelleMedicament = famLibelleMedicament; 
+	} 
+	
+	public String getDC() { 
+		return DC; 
 	} 
 	 
 	 
